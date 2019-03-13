@@ -7,6 +7,11 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D RigidBody;
     public float Movespeed;
 
+    private void Start()
+    {
+        Time.timeScale = 1;
+    }
+
     void FixedUpdate()
     {
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
