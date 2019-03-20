@@ -6,10 +6,12 @@ TagManager:
   tags:
   - Enemy
   - EnemyCatch
-  - UpgradedTrap
   - StartingTrap
   - EnemySight
   - Bullet
+  - FinalTrap
+  - FlameTrap
+  - UpgradedTrap
   layers:
   - Default
   - TransparentFX

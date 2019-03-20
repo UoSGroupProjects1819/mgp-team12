@@ -166,7 +166,7 @@ Transform:
   m_GameObject: {fileID: 1727792226592809441}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.08, y: 0.64, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 258389478}
   - {fileID: 5051318626422403233}
@@ -326,7 +326,7 @@ MonoBehaviour:
   repathRate: 0.1
   canSearch: 1
   canMove: 1
-  speed: 1
+  speed: 4
   orientation: 1
   enableRotation: 1
   rotationSpeed: 10
