@@ -171,7 +171,7 @@ Transform:
   m_GameObject: {fileID: 5541900114131303937}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.1, y: 0.41, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 5541900114911892698}
   - {fileID: 1203131116100444667}
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RigidBody: {fileID: 5541900114131303939}
-  Movespeed: 2
+  Movespeed: 5
   PauseMenu: {fileID: 0}
 --- !u!58 &4043101408155173934
 CircleCollider2D:
