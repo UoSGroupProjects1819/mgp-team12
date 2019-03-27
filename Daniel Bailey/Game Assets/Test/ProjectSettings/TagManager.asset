@@ -12,6 +12,8 @@ TagManager:
   - FinalTrap
   - FlameTrap
   - UpgradedTrap
+  - VerticleRoom
+  - HorizontalRoom
   layers:
   - Default
   - TransparentFX

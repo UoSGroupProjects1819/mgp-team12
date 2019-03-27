@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class AIDamage : MonoBehaviour
 {
@@ -45,6 +46,10 @@ public class AIDamage : MonoBehaviour
                 Health = Health - 4;
             }
             Destroy(collision.gameObject);
+        }
+        else if (collision.gameObject.tag == "SleepTrap")
+        {
+
         }
     }
 }
