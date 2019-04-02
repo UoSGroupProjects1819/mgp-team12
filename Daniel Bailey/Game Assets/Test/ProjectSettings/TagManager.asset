@@ -14,6 +14,8 @@ TagManager:
   - UpgradedTrap
   - VerticleRoom
   - HorizontalRoom
+  - FlameTrapPickup
+  - SpikeTrapPickup
   layers:
   - Default
   - TransparentFX

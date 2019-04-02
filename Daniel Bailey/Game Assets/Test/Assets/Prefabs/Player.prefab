@@ -326,7 +326,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartingTrap: {fileID: 2418637399243294986, guid: 0692f3960ce566d419f74fb290125afb,
     type: 3}
-  UpgradedTrap: {fileID: 1480328220, guid: e3ca1b3c5fbef984596a0d8839f385f3, type: 3}
+  SpikeTrap: {fileID: 3076995734455926629, guid: 9884545ca5ba15442bcf63be9addeaa3,
+    type: 3}
+  FlameTrap: {fileID: 1480328220, guid: e3ca1b3c5fbef984596a0d8839f385f3, type: 3}
   CurrentTrap: {fileID: 0}
   PlaceUp: {fileID: 3433804086667627521}
   PlaceDown: {fileID: 6850267683509599564}

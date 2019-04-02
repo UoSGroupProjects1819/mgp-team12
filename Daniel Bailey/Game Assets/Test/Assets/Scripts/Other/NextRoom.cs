@@ -7,6 +7,8 @@ public class NextRoom : MonoBehaviour
     public Transform BackPosition;
     public Transform FrontPositon;
     public Camera MainCamera;
+    public float FrontRoomSize;
+    public float BackRoomSize;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -19,12 +21,14 @@ public class NextRoom : MonoBehaviour
                 {
                     //move camera up
                     MainCamera.transform.position = FrontPositon.transform.position;
+                    MainCamera.orthographicSize = FrontRoomSize;
                 }
 
                 else
                 {
                     //move camera down
                     MainCamera.transform.position = BackPosition.transform.position;
+                    MainCamera.orthographicSize = BackRoomSize;
                 }
             }
 
@@ -34,12 +38,14 @@ public class NextRoom : MonoBehaviour
                 {
                     //move camera right
                     MainCamera.transform.position = FrontPositon.transform.position;
+                    MainCamera.orthographicSize = FrontRoomSize;
                 }
 
                 else
                 {
                     //move camera left
                     MainCamera.transform.position = BackPosition.transform.position;
+                    MainCamera.orthographicSize = BackRoomSize;
                 }
             }
         }

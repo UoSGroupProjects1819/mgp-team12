@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class RoomCheck : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public List<GameObject> Enemy;
+    public int NumberOfEnemies;
+    private GameObject InactiveEnemy;
+    public GameObject RoomDoor;
 
-    // Update is called once per frame
-    void Update()
+    // Start is called before the first frame update
+
+    private void Update()
     {
-        
+        for (int i = 0; i < Enemy.Count; i++)
+        {
+            if (!Enemy[i].activeInHierarchy) //Finds inactive enemies
+            {
+                InactiveEnemy = Enemy[i];
+                NumberOfEnemies--;
+                Enemy.Remove(InactiveEnemy);
+            }
+        }
+
+        if( NumberOfEnemies == 0)
+        {
+            Destroy(RoomDoor);
+        }
     }
 }
+

@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlaceTrap : MonoBehaviour
 {
     public GameObject StartingTrap;
-    public GameObject UpgradedTrap;
+    public GameObject SpikeTrap;
+    public GameObject FlameTrap;
     public GameObject CurrentTrap;
 
     public GameObject PlaceUp;
@@ -60,5 +61,17 @@ public class PlaceTrap : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         CanPlace = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "FlameTrapPickup")
+        {
+            CurrentTrap = FlameTrap;
+        }
+        else if (collision.gameObject.tag == "SpikeTrapPickup")
+            {
+                CurrentTrap = SpikeTrap;
+            }
     }
 }
