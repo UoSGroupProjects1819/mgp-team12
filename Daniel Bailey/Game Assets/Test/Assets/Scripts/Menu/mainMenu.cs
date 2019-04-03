@@ -9,11 +9,21 @@ public class mainMenu : MonoBehaviour
     //Get Canvas groups
     public CanvasGroup MainMenuGroup;
     public CanvasGroup HowToPlayGroup;
+    public CanvasGroup IntroGroup;
+    public bool Intro = false;
 
     //Loading next scene on Play Button press
     public void LoadLevel(string SceneToLoad)
     {
-        SceneManager.LoadScene(1);
+        MainMenuGroup.alpha = 0;
+        MainMenuGroup.interactable = false;
+        MainMenuGroup.blocksRaycasts = false;
+
+        IntroGroup.alpha = 1;
+        IntroGroup.interactable = true;
+        IntroGroup.blocksRaycasts = true;
+
+        Intro = true;
     }
 
     public void HowToPlay()
@@ -40,6 +50,17 @@ public class mainMenu : MonoBehaviour
         HowToPlayGroup.interactable = false;
         HowToPlayGroup.blocksRaycasts = false;
 
+    }
+
+    public void FixedUpdate()
+    {
+        if(Intro == true)
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                SceneManager.LoadScene(1);
+            }
+        }
     }
 
 
