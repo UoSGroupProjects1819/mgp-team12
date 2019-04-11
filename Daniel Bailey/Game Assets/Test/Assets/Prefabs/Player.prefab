@@ -184,8 +184,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RigidBody: {fileID: 5541900114131303939}
-  Movespeed: 3
+  Movespeed: 4
   PauseMenu: {fileID: 0}
+  ControlsScreen: {fileID: 0}
 --- !u!114 &3847983571897661710
 MonoBehaviour:
   m_ObjectHideFlags: 0

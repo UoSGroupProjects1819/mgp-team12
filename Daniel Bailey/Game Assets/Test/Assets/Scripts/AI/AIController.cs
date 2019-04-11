@@ -43,7 +43,7 @@ public class AIController : MonoBehaviour
             SightCheck = false;
             Timer = 13;
             CanFire = true;
-            AILerp.speed = 2;
+            AILerp.speed = 5;
         }
     }
 
@@ -72,7 +72,7 @@ public class AIController : MonoBehaviour
         {
             //Enable Destination setter
             AIDestinationSetterScript.enabled = false;
-            AILerp.speed = 1;
+            AILerp.speed = 3;
             //Disable Patrol script
             AIPatrolScript.enabled = true;
         }

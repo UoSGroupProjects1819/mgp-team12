@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float Movespeed;
 
     public CanvasGroup PauseMenu;
+    public CanvasGroup ControlsScreen;
 
     private void Start()
     {
@@ -45,6 +46,10 @@ public class PlayerMovement : MonoBehaviour
                 PauseMenu.interactable = false;
                 PauseMenu.blocksRaycasts = false;
                 Time.timeScale = 1;
+
+                ControlsScreen.alpha = 0;
+                ControlsScreen.blocksRaycasts = false;
+                ControlsScreen.interactable = false;
             }
         }
     }
