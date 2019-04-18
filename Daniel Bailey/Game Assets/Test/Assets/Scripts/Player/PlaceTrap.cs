@@ -15,6 +15,10 @@ public class PlaceTrap : MonoBehaviour
     public GameObject PlaceRight;
 
     public bool CanPlace;
+
+    public AudioClip TrapPickup;
+    public AudioSource AudioSrc;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,11 +71,17 @@ public class PlaceTrap : MonoBehaviour
     {
         if(collision.gameObject.tag == "FlameTrapPickup")
         {
+            AudioSrc.clip = TrapPickup;
+            AudioSrc.Play();
             CurrentTrap = FlameTrap;
+            Destroy(collision.gameObject);
         }
         else if (collision.gameObject.tag == "SpikeTrapPickup")
             {
-                CurrentTrap = SpikeTrap;
+            AudioSrc.clip = TrapPickup;
+            AudioSrc.Play();
+            CurrentTrap = SpikeTrap;
+            Destroy(collision.gameObject);
             }
     }
 }

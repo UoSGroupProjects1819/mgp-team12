@@ -14,7 +14,7 @@ public class AIController : MonoBehaviour
     public bool SightCheck;
     public bool InRange;
 
-    public bool CanFire;
+    public bool CanFire = false;
     public GameObject Player;
     public GameObject Bullet;
     public GameObject BulletSpawn;
@@ -39,14 +39,13 @@ public class AIController : MonoBehaviour
             AIDestinationSetterScript.enabled = true;
             //Disable Patrol script
             AIPatrolScript.enabled = false;
-            InRange = true;
             SightCheck = false;
             Timer = 13;
-            CanFire = true;
             AILerp.speed = 5;
+            CanFire = true;
+            InRange = true;
         }
     }
-
 
     private void OnTriggerExit2D(Collider2D other)
     {
@@ -107,7 +106,7 @@ public class AIController : MonoBehaviour
         BulletVector.x = this.transform.position.x - Player.transform.position.x;
         BulletVector.y = this.transform.position.y - Player.transform.position.y;
         TempBody = TempBullet.gameObject.GetComponent<Rigidbody2D>();
-        TempBody.AddForce(-BulletVector, ForceMode2D.Impulse);
+        TempBody.AddForce(-BulletVector *7, ForceMode2D.Impulse);
         //Active Cooldown
         StartCoroutine(FireDelay());
     }

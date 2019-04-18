@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
     public int Health;
     public CanvasGroup GameOver;
+    public TextMeshProUGUI HealthText;
+
+    private void Update()
+    {
+        HealthText.text = "Health = " + Health;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

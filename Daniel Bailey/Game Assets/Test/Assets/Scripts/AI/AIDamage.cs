@@ -19,6 +19,7 @@ public class AIDamage : MonoBehaviour
             }
             else
             {
+                ScoreScript.Score += 10;
                 Health = Health - 1;
             }
             Destroy(collision.gameObject);
@@ -27,6 +28,7 @@ public class AIDamage : MonoBehaviour
         {
             if (Health <= 2)
             {
+                ScoreScript.Score += 10;
                 this.gameObject.SetActive(false);
             }
             else
@@ -39,6 +41,7 @@ public class AIDamage : MonoBehaviour
         {
             if (Health <= 4)
             {
+                ScoreScript.Score += 10;
                 this.gameObject.SetActive(false);
             }
             else
