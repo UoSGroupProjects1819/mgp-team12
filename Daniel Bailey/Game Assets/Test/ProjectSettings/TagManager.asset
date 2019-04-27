@@ -16,6 +16,9 @@ TagManager:
   - HorizontalRoom
   - FlameTrapPickup
   - SpikeTrapPickup
+  - SleepTrapPickup
+  - SleepTrap
+  - GuardTowerSight
   layers:
   - Default
   - TransparentFX

@@ -233,6 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 3
   GameOver: {fileID: 0}
+  HealthText: {fileID: 0}
 --- !u!114 &5761817153938081235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,8 +250,14 @@ MonoBehaviour:
     type: 3}
   SpikeTrap: {fileID: 3076995734455926629, guid: 9884545ca5ba15442bcf63be9addeaa3,
     type: 3}
+  NumOfSpike: 0
   FlameTrap: {fileID: 1480328220, guid: e3ca1b3c5fbef984596a0d8839f385f3, type: 3}
+  NumOfFlame: 0
+  SleepTrap: {fileID: 389397023314464764, guid: ff61a841ff0dab54fbb2c6c504d73eb1,
+    type: 3}
+  NumOfSleep: 0
   CurrentTrap: {fileID: 0}
+  TrapInventory: []
   PlaceUp: {fileID: 3433804086667627521}
   PlaceDown: {fileID: 6850267683509599564}
   PlaceLeft: {fileID: 7448251607274813538}
@@ -258,6 +265,7 @@ MonoBehaviour:
   CanPlace: 0
   TrapPickup: {fileID: 8300000, guid: b26c896caa3de4c4988c863b5fe9f036, type: 3}
   AudioSrc: {fileID: 5978705762777035075}
+  CurrentTrapHUD: {fileID: 0}
 --- !u!61 &5541900115677218568
 BoxCollider2D:
   m_ObjectHideFlags: 0

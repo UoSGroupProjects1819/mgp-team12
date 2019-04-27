@@ -18,4 +18,19 @@ public class AICatch : MonoBehaviour
             Time.timeScale = 0;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            if(this.gameObject.tag == "GuardTowerSight")
+            {
+                Destroy(collision.gameObject);
+                GameOver.alpha = 1;
+                GameOver.blocksRaycasts = true;
+                GameOver.interactable = true;
+                Time.timeScale = 0;
+            }
+        }
+    }
 }

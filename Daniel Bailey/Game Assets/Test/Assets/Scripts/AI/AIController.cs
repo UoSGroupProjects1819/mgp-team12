@@ -10,7 +10,7 @@ public class AIController : MonoBehaviour
     public AIDestinationSetter AIDestinationSetterScript;
     public AILerp AILerp;
 
-    public float Timer;
+    public float Timer = -1;
     public bool SightCheck;
     public bool InRange;
 
@@ -66,7 +66,6 @@ public class AIController : MonoBehaviour
             SightCheck = false;
             StartCoroutine(SightCheckTimer());
         }
-
         if (Timer == 0)
         {
             //Enable Destination setter
@@ -74,6 +73,7 @@ public class AIController : MonoBehaviour
             AILerp.speed = 3;
             //Disable Patrol script
             AIPatrolScript.enabled = true;
+            Timer = -1;
         }
 
         if (CanFire == true && InRange == true)

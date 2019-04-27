@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Pathfinding;
 using UnityEngine;
 using System;
 
@@ -7,6 +8,10 @@ public class AIDamage : MonoBehaviour
 {
     public float Health;
     public GameObject explosionEffect;
+    public Patrol AIPatrolScript;
+    public AIDestinationSetter AIDestinationSetterScript;
+    public AILerp AILerpScript;
+    public AIController Controller;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -52,8 +57,22 @@ public class AIDamage : MonoBehaviour
         }
         else if (collision.gameObject.tag == "SleepTrap")
         {
+            Destroy(collision.gameObject);
+            Controller.enabled = false;
+            AIDestinationSetterScript.enabled = false;
+            AILerpScript.enabled = false;
+            AIPatrolScript.enabled = false;
+            Sleeping();
+            Controller.enabled = true;
+            AILerpScript.enabled = true;
+            AIPatrolScript.enabled = true;
 
         }
+    }
+
+    public IEnumerator Sleeping()
+    {
+        yield return new WaitForSeconds(5);
     }
 }
     
