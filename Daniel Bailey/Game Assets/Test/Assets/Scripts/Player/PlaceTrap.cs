@@ -13,6 +13,10 @@ public class PlaceTrap : MonoBehaviour
     public GameObject SleepTrap;
     public int NumOfSleep = 0;
     public GameObject CurrentTrap;
+    public int NumOfCurrent;
+    public int NumOfStarting = 10;
+    public int CurrentIndex = 0;
+    public bool Changing = false;
 
     public List<GameObject> TrapInventory;
 
@@ -24,6 +28,7 @@ public class PlaceTrap : MonoBehaviour
     public bool CanPlace;
 
     public AudioClip TrapPickup;
+    public AudioClip Casting;
     public AudioSource AudioSrc;
     public TextMeshProUGUI CurrentTrapHUD;
 
@@ -31,6 +36,7 @@ public class PlaceTrap : MonoBehaviour
     void Start()
     {
         CurrentTrap = StartingTrap;
+        NumOfCurrent = NumOfStarting;
         CanPlace = true;
         TrapInventory.Add(StartingTrap);
         CurrentTrapHUD.text = CurrentTrap.name;
@@ -43,6 +49,58 @@ public class PlaceTrap : MonoBehaviour
         {
             PlacingTrap();
         } 
+
+       if(TrapInventory.Count > 1)
+        {
+            if (Input.GetAxisRaw("NextTrap") == 1)
+            {
+                if (Changing == false)
+                {
+                    Changing = true;
+                    //Save new number of trap being changed
+                    OldTrap();
+                    //Move to Next Trap
+                    if (CurrentIndex == TrapInventory.Count -1)
+                    {
+                        CurrentIndex = 0;
+                    }
+                    else
+                    {
+                        CurrentIndex += 1;
+                    }
+                    CurrentTrap = TrapInventory[CurrentIndex];
+                    //Set Number of Traps to number of new traps
+                    NewTrap();
+                    TrapCooldown();
+                    Changing = false;
+                }
+            }
+            else if (Input.GetAxisRaw("NextTrap") == -1)
+            {
+                if (Changing == false)
+                {
+                    Changing = true;
+                    //Save new number of trap being changed
+                    OldTrap();
+                    //Move to Previous Trap
+                    if (CurrentIndex == 0)
+                    {
+                        CurrentIndex = TrapInventory.Count -1;
+                    }
+                    else
+                    {
+                        CurrentIndex -= 1;
+                    }
+                    CurrentTrap = TrapInventory[CurrentIndex];
+                    //Set Number of Traps to number of new traps
+                    NewTrap();
+                    TrapCooldown();
+                    Changing = false;
+                }
+            }
+        }
+
+        CurrentTrapHUD.text = CurrentTrap.name;
     }
 
     public IEnumerator TrapCooldown()
@@ -105,30 +163,101 @@ public class PlaceTrap : MonoBehaviour
     {
         if (Input.GetAxisRaw("PlaceLeft") == 1)
         {
-            CanPlace = false;
-            Instantiate(CurrentTrap, PlaceLeft.transform.position, Quaternion.identity);
-            StartCoroutine(TrapCooldown());
+            if (NumOfCurrent > 0)
+            {
+                NumOfCurrent -= 1;
+                PlayCastSound();
+                CanPlace = false;
+                Instantiate(CurrentTrap, PlaceLeft.transform.position, Quaternion.identity);
+                StartCoroutine(TrapCooldown());
+            }
+
         }
 
         if (Input.GetAxisRaw("PlaceLeft") == -1)
         {
-            CanPlace = false;
-            Instantiate(CurrentTrap, PlaceRight.transform.position, Quaternion.identity);
-            StartCoroutine(TrapCooldown());
+            if (NumOfCurrent > 0)
+            {
+                NumOfCurrent -= 1;
+                PlayCastSound();
+                CanPlace = false;
+                Instantiate(CurrentTrap, PlaceRight.transform.position, Quaternion.identity);
+                StartCoroutine(TrapCooldown());
+            }
         }
 
         if (Input.GetAxisRaw("PlaceUp") == 1)
         {
-            CanPlace = false;
-            Instantiate(CurrentTrap, PlaceUp.transform.position, Quaternion.identity);
-            StartCoroutine(TrapCooldown());
+            if (NumOfCurrent > 0)
+            {
+                NumOfCurrent -= 1;
+                PlayCastSound();
+                CanPlace = false;
+                Instantiate(CurrentTrap, PlaceUp.transform.position, Quaternion.identity);
+                StartCoroutine(TrapCooldown());
+            }
         }
 
         if (Input.GetAxisRaw("PlaceUp") == -1)
         {
-            CanPlace = false;
-            Instantiate(CurrentTrap, PlaceDown.transform.position, Quaternion.identity);
-            StartCoroutine(TrapCooldown());
+            if (NumOfCurrent > 0)
+            {
+                NumOfCurrent -= 1;
+                PlayCastSound();
+                CanPlace = false;
+                Instantiate(CurrentTrap, PlaceDown.transform.position, Quaternion.identity);
+                StartCoroutine(TrapCooldown());
+            }
+        }
+    }
+
+    public void PlayCastSound()
+    {
+        AudioSrc.clip = Casting;
+        AudioSrc.Play();
+    }
+
+    public void OldTrap()
+    {
+        //Find Current Trap
+        //Set Number of that trap to be Number of current trap
+        if (CurrentTrap.gameObject.tag == "StartingTrap")
+        {
+            NumOfStarting = NumOfCurrent;
+        }
+        else if(CurrentTrap.gameObject.tag == "FlameTrap")
+        {
+            NumOfFlame = NumOfCurrent;
+        }
+        else if(CurrentTrap.gameObject.tag == "SleepTrap")
+        {
+            NumOfSleep = NumOfCurrent;
+        }
+        else if(CurrentTrap.gameObject.tag == "SpikeTrap")
+        {
+            NumOfSpike = NumOfCurrent;
+        }
+    }
+
+    public void NewTrap()
+    {
+        //Find New Current Trap
+        //Set Number of Current Trap to be Number of new trap
+        if (CurrentTrap.gameObject.tag == "StartingTrap")
+        {
+            NumOfCurrent = NumOfStarting;
+        }
+        else if (CurrentTrap.gameObject.tag == "FlameTrap")
+        {
+            NumOfCurrent = NumOfFlame;
+        }
+        else if (CurrentTrap.gameObject.tag == "SleepTrap")
+        {
+            NumOfCurrent = NumOfSleep;
+        }
+        else if (CurrentTrap.gameObject.tag == "SpikeTrap")
+        {
+            NumOfCurrent = NumOfSpike;
         }
     }
 }

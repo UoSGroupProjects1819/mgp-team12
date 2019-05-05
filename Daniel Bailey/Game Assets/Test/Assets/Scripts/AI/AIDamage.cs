@@ -13,7 +13,7 @@ public class AIDamage : MonoBehaviour
     public AILerp AILerpScript;
     public AIController Controller;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         
         if (collision.gameObject.tag == "StartingTrap")
@@ -57,7 +57,6 @@ public class AIDamage : MonoBehaviour
         }
         else if (collision.gameObject.tag == "SleepTrap")
         {
-            Destroy(collision.gameObject);
             Controller.enabled = false;
             AIDestinationSetterScript.enabled = false;
             AILerpScript.enabled = false;
@@ -66,7 +65,7 @@ public class AIDamage : MonoBehaviour
             Controller.enabled = true;
             AILerpScript.enabled = true;
             AIPatrolScript.enabled = true;
-
+            Destroy(collision.gameObject);
         }
     }
 

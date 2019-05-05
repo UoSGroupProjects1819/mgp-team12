@@ -257,6 +257,10 @@ MonoBehaviour:
     type: 3}
   NumOfSleep: 0
   CurrentTrap: {fileID: 0}
+  NumOfCurrent: 0
+  NumOfStarting: 999999
+  CurrentIndex: 0
+  Changing: 0
   TrapInventory: []
   PlaceUp: {fileID: 3433804086667627521}
   PlaceDown: {fileID: 6850267683509599564}
@@ -264,6 +268,7 @@ MonoBehaviour:
   PlaceRight: {fileID: 2483180447977004195}
   CanPlace: 0
   TrapPickup: {fileID: 8300000, guid: b26c896caa3de4c4988c863b5fe9f036, type: 3}
+  Casting: {fileID: 8300000, guid: b86c373d27a3a1f489c6197d7c38b9b7, type: 3}
   AudioSrc: {fileID: 5978705762777035075}
   CurrentTrapHUD: {fileID: 0}
 --- !u!61 &5541900115677218568
@@ -329,7 +334,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
