@@ -48,59 +48,67 @@ public class PlaceTrap : MonoBehaviour
        if (CanPlace == true)
         {
             PlacingTrap();
-        } 
-
-       if(TrapInventory.Count > 1)
-        {
-            if (Input.GetAxisRaw("NextTrap") == 1)
-            {
-                if (Changing == false)
-                {
-                    Changing = true;
-                    //Save new number of trap being changed
-                    OldTrap();
-                    //Move to Next Trap
-                    if (CurrentIndex == TrapInventory.Count -1)
-                    {
-                        CurrentIndex = 0;
-                    }
-                    else
-                    {
-                        CurrentIndex += 1;
-                    }
-                    CurrentTrap = TrapInventory[CurrentIndex];
-                    //Set Number of Traps to number of new traps
-                    NewTrap();
-                    TrapCooldown();
-                    Changing = false;
-                }
-            }
-            else if (Input.GetAxisRaw("NextTrap") == -1)
-            {
-                if (Changing == false)
-                {
-                    Changing = true;
-                    //Save new number of trap being changed
-                    OldTrap();
-                    //Move to Previous Trap
-                    if (CurrentIndex == 0)
-                    {
-                        CurrentIndex = TrapInventory.Count -1;
-                    }
-                    else
-                    {
-                        CurrentIndex -= 1;
-                    }
-                    CurrentTrap = TrapInventory[CurrentIndex];
-                    //Set Number of Traps to number of new traps
-                    NewTrap();
-                    TrapCooldown();
-                    Changing = false;
-                }
-            }
         }
 
-        CurrentTrapHUD.text = CurrentTrap.name;
+        if (TrapInventory.Count > 1)
+        {
+            if (Changing == false)
+            {
+                if (Input.GetAxisRaw("NextTrap") == 1)
+                {
+                    StartCoroutine(NextTrap());
+                }
+
+                else if (Input.GetAxisRaw("NextTrap") == -1)
+                {
+                    StartCoroutine(LastTrap());
+                }
+            }
+
+            CurrentTrapHUD.text = CurrentTrap.name;
+        }
+    }
+
+    public IEnumerator NextTrap()
+    {
+        Changing = true;
+        //Save new number of trap being changed
+        OldTrap();
+        //Move to Next Trap
+        if (CurrentIndex == TrapInventory.Count - 1)
+        {
+            CurrentIndex = 0;
+        }
+        else
+        {
+            CurrentIndex += 1;
+        }
+        CurrentTrap = TrapInventory[CurrentIndex];
+        //Set Number of Traps to number of new traps
+        NewTrap();
+        yield return new WaitForSecondsRealtime(2);
+        Changing = false;
+    }
+
+    public IEnumerator LastTrap()
+    {
+        Changing = true;
+        //Save new number of trap being changed
+        OldTrap();
+        //Move to Previous Trap
+        if (CurrentIndex == 0)
+        {
+            CurrentIndex = TrapInventory.Count - 1;
+        }
+        else
+        {
+            CurrentIndex -= 1;
+        }
+        CurrentTrap = TrapInventory[CurrentIndex];
+        //Set Number of Traps to number of new traps
+        NewTrap();
+        yield return new WaitForSecondsRealtime(2);
+        Changing = false;
     }
 
     public IEnumerator TrapCooldown()

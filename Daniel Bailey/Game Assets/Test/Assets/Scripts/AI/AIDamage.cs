@@ -8,12 +8,15 @@ public class AIDamage : MonoBehaviour
 {
     public float Health;
     public GameObject explosionEffect;
-    public Patrol AIPatrolScript;
-    public AIDestinationSetter AIDestinationSetterScript;
     public AILerp AILerpScript;
-    public AIController Controller;
+    public AIPath PathScript;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Start()
+    {
+        AILerpScript = this.GetComponent<AILerp>();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         
         if (collision.gameObject.tag == "StartingTrap")
@@ -57,21 +60,18 @@ public class AIDamage : MonoBehaviour
         }
         else if (collision.gameObject.tag == "SleepTrap")
         {
-            Controller.enabled = false;
-            AIDestinationSetterScript.enabled = false;
-            AILerpScript.enabled = false;
-            AIPatrolScript.enabled = false;
-            Sleeping();
-            Controller.enabled = true;
-            AILerpScript.enabled = true;
-            AIPatrolScript.enabled = true;
+            AILerpScript.isStopped = true;
+            PathScript.isStopped = true;
+            StartCoroutine(Sleeping());
             Destroy(collision.gameObject);
         }
     }
 
     public IEnumerator Sleeping()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSecondsRealtime(3);
+        AILerpScript.isStopped = false;
+        PathScript.isStopped = false;
     }
 }
     

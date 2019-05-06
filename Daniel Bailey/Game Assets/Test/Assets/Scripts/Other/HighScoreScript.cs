@@ -4,17 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class HighScoreScript : MonoBehaviour
 {
     public float HighScore;
     public float CurrentTime;
-    //public Text HighScoreText;
-    //public Text SurvivedTime;
+    public TextMeshProUGUI HighScoreText;
+    public TextMeshProUGUI SurvivedTime;
+    public TextMeshProUGUI OldHighScore;
 
     void Start()
     {
         HighScore = PlayerPrefs.GetFloat("HighScore");
+        OldHighScore.text = HighScore.ToString();
     }
 
     private void Update()
@@ -28,9 +31,9 @@ public class HighScoreScript : MonoBehaviour
         if (CurrentTime >= HighScore)
         {
             PlayerPrefs.SetFloat("HighScore", CurrentTime);
-            //HighScoreText.text = "A new high score!";
+            HighScoreText.text = "A new high score!";
         }
-        //SurvivedTime.text = "You Survived for " + CurrentTime + " Seconds";
+        SurvivedTime.text =  CurrentTime + " Seconds";
     }
 
 }

@@ -8,6 +8,7 @@ public class ScoreScript : MonoBehaviour
 
     public static int Score = 0;
     public TextMeshProUGUI ScoreText;
+    public TextMeshProUGUI ScoreTextAtEnd;
 
     // Start is called before the first frame update
     void Start()
@@ -19,5 +20,6 @@ public class ScoreScript : MonoBehaviour
     void Update()
     {
         ScoreText.text = "Score " + Score;
+        ScoreTextAtEnd.text = Score.ToString();
     }
 }

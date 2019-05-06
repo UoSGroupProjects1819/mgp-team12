@@ -104,8 +104,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00000015894572, y: 1.0773425}
-  m_Size: {x: 0.9474901, y: 1.9946852}
+  m_Offset: {x: 0.00000015894572, y: 1.4010395}
+  m_Size: {x: 0.9474901, y: 2.642079}
   m_Direction: 0
 --- !u!114 &1092065373
 MonoBehaviour:
@@ -500,10 +500,8 @@ MonoBehaviour:
   Health: 2
   explosionEffect: {fileID: 2707686798329341578, guid: 8788c1474071ccd47b6a67e85ab1e87c,
     type: 3}
-  AIPatrolScript: {fileID: 1345048286}
-  AIDestinationSetterScript: {fileID: 3183339789865752555}
   AILerpScript: {fileID: 5706887517495084599}
-  Controller: {fileID: 1092065373}
+  PathScript: {fileID: 1345048283}
 --- !u!114 &3621791376889158943
 MonoBehaviour:
   m_ObjectHideFlags: 0
