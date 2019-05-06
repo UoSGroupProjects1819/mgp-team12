@@ -28,7 +28,7 @@ public class HighScoreScript : MonoBehaviour
         }
         CurrentTime = Time.timeSinceLevelLoad;
 
-        if (CurrentTime >= HighScore)
+        if (CurrentTime <= HighScore)
         {
             PlayerPrefs.SetFloat("HighScore", CurrentTime);
             HighScoreText.text = "A new high score!";
