@@ -39,7 +39,7 @@ public class PlaceTrap : MonoBehaviour
         NumOfCurrent = NumOfStarting;
         CanPlace = true;
         TrapInventory.Add(StartingTrap);
-        CurrentTrapHUD.text = CurrentTrap.name;
+        CurrentTrapHUD.text = CurrentTrap.name + " x " + NumOfCurrent;
     }
 
     // Update is called once per frame
@@ -64,9 +64,8 @@ public class PlaceTrap : MonoBehaviour
                     StartCoroutine(LastTrap());
                 }
             }
-
-            CurrentTrapHUD.text = CurrentTrap.name;
         }
+        CurrentTrapHUD.text = CurrentTrap.name + " x " + NumOfCurrent;
     }
 
     public IEnumerator NextTrap()
